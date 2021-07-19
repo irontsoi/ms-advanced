@@ -60,13 +60,15 @@ tigera-elasticsearch   kubernetes.io/aws-ebs   Retain          WaitForFirstConsu
 Calico will be the networking (CNI) and network policy implementation throughout your training lab. To install Calico, we will use an operator, so it will implement and automate the lifecycle of our calico deployment:
 
 ```
-kubectl create -f https://docs.tigera.io/manifests/tigera-operator.yaml
+kubectl create -f https://docs.tigera.io/v3.7/manifests/tigera-operator.yaml
+
 ```
 
 We need to implement an operator for the prometheus component too:
 
 ```
-kubectl create -f https://docs.tigera.io/manifests/tigera-prometheus-operator.yaml
+kubectl create -f https://docs.tigera.io/v3.7/manifests/tigera-prometheus-operator.yaml
+
 ```
 
 Check tigera-operator has been successfully rolled out:
@@ -382,13 +384,22 @@ chmod +x calicoctl
 sudo mv calicoctl /usr/local/bin/
 ```
 
-Finally, check the installed Calico version in your lab:
+Check the installed Calico version in your lab:
 
 ```
 calicoctl version
 ```
 
 Please confirm the "Cluster Calico Enterprise Version" matches the calicoctl version in "Client Version", otherwise please raise this to your instructor
+
+Configure autocomplete for kubectl.
+
+```
+sudo apt-get install bash-completion
+source /usr/share/bash-completion/bash_completion
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+source ~/.bashrc
+```
 
 ## 1.2. Launch the sample applications (yaobank)
 
