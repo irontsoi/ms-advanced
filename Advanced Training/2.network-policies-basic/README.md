@@ -248,7 +248,7 @@ kubectl exec -ti $APP1_POD -n app1 -- sh
 Verify you cannot access the etcd port in the database deployment (use the IP address from the database pod you retrieved earlier):
 
 ```
-/ # telnet 10.48.0.209:2379
+# telnet 10.48.0.209:2379
 ```
 
 However the yaobank rules allow us to access the resource from the `summary` microservice, so your browser should still be able to access yaobank.
@@ -256,11 +256,11 @@ However the yaobank rules allow us to access the resource from the `summary` mic
 Access to any of the app2 pods should be successful (replace the IP for any of the two pods in the namesapce app2 your retrieved before).
 
 ```
-/ # ping 10.48.0.211
+# ping 10.48.0.211
 ```
 
 Access to external destinations should be successful
 
 ```
-/ # curl -I https://www.tigera.io
+curl -I https://www.tigera.io
 ```
